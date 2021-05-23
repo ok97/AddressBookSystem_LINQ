@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace AddressBookSystem_LINQ
 {
     class AddressBookTable
-    {  
+    {
         DataTable table = new DataTable("AddressBookSystem"); // UC 1 Create a new DataTable
-        
+
         /* UC2:- Ability to create a Address Book Table with first and last names, address, city, 
                  state, zip, phone number and email as its attributes
         */
@@ -29,29 +29,47 @@ namespace AddressBookSystem_LINQ
             table.Rows.Add("Omprakash", "Khawshi", "Bajaj Nagr", "Nagpur", "Maharashtra", "412105", "8788566219", "omkh@gmail.com");
             table.Rows.Add("Ekta", "Kumbhare", "Aund", "Pune", "Maharashtra", "125121", "8570934858", "ekta@gmail.com");
             table.Rows.Add("Vishal", "Singh", "Mumbai", "Mumbai", "Maharashtra", "442206", "7894561230", "vishal@gmail.com.a");
-           
+
 
 
         }
 
         public void GetAllContacts()
         {
-            Console.WriteLine("\n\n");
-            foreach (DataRow dr in table.AsEnumerable())
+            try
             {
-                Console.WriteLine("\n\n");
-                Console.WriteLine("FirstName:- " + dr.Field<string>("firstName"));
-                Console.WriteLine("LastName:- " + dr.Field<string>("lastName"));
-                Console.WriteLine("Address:- " + dr.Field<string>("address"));
-                Console.WriteLine("City:- " + dr.Field<string>("city"));
-                Console.WriteLine("State:- " + dr.Field<string>("state"));
-                Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
-                Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
-                Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+
+
+                Console.WriteLine("\n");
+                foreach (DataRow dr in table.AsEnumerable())
+                {
+                    Console.WriteLine("\n");
+                    Console.WriteLine("FirstName:- " + dr.Field<string>("firstName"));
+                    Console.WriteLine("LastName:- " + dr.Field<string>("lastName"));
+                    Console.WriteLine("Address:- " + dr.Field<string>("address"));
+                    Console.WriteLine("City:- " + dr.Field<string>("city"));
+                    Console.WriteLine("State:- " + dr.Field<string>("state"));
+                    Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
+                    Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
+                    Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.HelpLink);
             }
 
         }
+        /*UC4:- Ability to edit existing contact person using their name
+         */
 
+        public void EditExistingContact(string firstName, string lastName, string column, string newValue)
+        {
+            DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
+            contact[column] = newValue;
+            Console.WriteLine("Record successfully Edit");
+            GetAllContacts();
 
+        }
     }
 }
