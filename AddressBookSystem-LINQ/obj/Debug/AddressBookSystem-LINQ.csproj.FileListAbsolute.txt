@@ -1,7 +1,0 @@
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\bin\Debug\AddressBookSystem-LINQ.exe.config
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\bin\Debug\AddressBookSystem-LINQ.exe
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\bin\Debug\AddressBookSystem-LINQ.pdb
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\obj\Debug\AddressBookSystem-LINQ.csprojAssemblyReference.cache
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\obj\Debug\AddressBookSystem-LINQ.csproj.CoreCompileInputs.cache
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\obj\Debug\AddressBookSystem-LINQ.exe
-D:\Practice\C#\AddressBookSystem-LINQ\AddressBookSystem-LINQ\obj\Debug\AddressBookSystem-LINQ.pdb
