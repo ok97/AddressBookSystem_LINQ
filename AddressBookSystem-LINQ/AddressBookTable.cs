@@ -38,8 +38,6 @@ namespace AddressBookSystem_LINQ
         {
             try
             {
-
-
                 Console.WriteLine("\n");
                 foreach (DataRow dr in table.AsEnumerable())
                 {
@@ -65,10 +63,36 @@ namespace AddressBookSystem_LINQ
 
         public void EditExistingContact(string firstName, string lastName, string column, string newValue)
         {
-            DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
-            contact[column] = newValue;
-            Console.WriteLine("Record successfully Edit");
-            GetAllContacts();
+            try
+            {
+                DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
+                contact[column] = newValue;
+                Console.WriteLine("Record successfully Edit");
+                GetAllContacts();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        /* UC5:- Ability to delete a person using person's name.
+         */
+
+        public void DeleteContact(string firstName, string lastName)
+        {
+            try
+            {
+                DataRow contact = table.Select("FirstName = '" + firstName + "' and LastName = '" + lastName + "'").FirstOrDefault();
+                table.Rows.Remove(contact);
+                Console.WriteLine("Record Successfully Delete");
+                GetAllContacts();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
     }
