@@ -27,7 +27,9 @@ namespace AddressBookSystem_LINQ
 
             //addressBookTable.CountByCityOrState("Pune", "Maharashtra");//UC7
 
-            addressBookTable.SortedContactsByNameForAgivenCity("Pune");
+            //addressBookTable.SortedContactsByNameForAgivenCity("Pune");//UC8
+
+            addressBookTable.AddAddressBookNameType();//UC9
 
             Console.ReadLine();
         }
