@@ -95,5 +95,29 @@ namespace AddressBookSystem_LINQ
             }
 
         }
+
+        /*UC6:- Ability to Retrieve Person belonging to a City or State from the Address Book*/
+
+        public void RetrieveByCityOrState(string Cityi, string Statei)
+        {
+            var retrieveData = from records in table.AsEnumerable()
+                               where (records.Field<string>("City").Equals(Cityi) || records.Field<string>("State").Equals(Statei))
+                               select records;
+            //Printing data
+            Console.WriteLine("\nRetrieved contactact details by city or state name");
+            foreach (DataRow dr in table.AsEnumerable())
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("FirstName:- " + dr.Field<string>("firstName"));
+                Console.WriteLine("LastName:- " + dr.Field<string>("lastName"));
+                Console.WriteLine("Address:- " + dr.Field<string>("address"));
+                Console.WriteLine("City:- " + dr.Field<string>("city"));
+                Console.WriteLine("State:- " + dr.Field<string>("state"));
+                Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
+                Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
+                Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+            }
+        }
+
     }
 }

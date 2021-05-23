@@ -20,7 +20,12 @@ namespace AddressBookSystem_LINQ
             //addressBookTable.EditExistingContact("Omprakash", "Khawshi", "PhoneNumber", "9921670015"); //UC4
 
 
-            addressBookTable.DeleteContact("Omprakash", "Khawshi"); //UC4
+            //addressBookTable.DeleteContact("Omprakash", "Khawshi"); //UC5
+
+            Console.WriteLine("\nRetrieves the state or city");
+           addressBookTable.RetrieveByCityOrState("Pune", "Delhi"); //UC6
+
+
 
             Console.ReadLine();
         }
