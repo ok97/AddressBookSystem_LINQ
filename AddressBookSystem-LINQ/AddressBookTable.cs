@@ -208,6 +208,19 @@ namespace AddressBookSystem_LINQ
                 Console.WriteLine(ex.Message);
             }
         }
+
+
+        /*UC10:- Ability to get number of contact persons i.e. count by type.
+         */
+
+        public void GetCountByType()
+        {
+            var element = from contact in table.AsEnumerable()
+                          group contact by contact.Field<string>("type") into g
+                          select new { typename = g.Key, Count = g.Count() };
+
+            element.ToList().ForEach(ele => Console.WriteLine($"type : {ele.typename} \t Count = {ele.Count}"));
+        }
     }
 
 }
