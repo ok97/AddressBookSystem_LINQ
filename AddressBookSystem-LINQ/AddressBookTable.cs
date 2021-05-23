@@ -9,7 +9,7 @@ namespace AddressBookSystem_LINQ
 {
     class AddressBookTable
     {
-        DataTable table = new DataTable("AddressBookSystem"); // UC 1 Create a new DataTable
+         DataTable table = new DataTable("AddressBookSystem"); // UC 1 Create a new DataTable
 
         /* UC2:- Ability to create a Address Book Table with first and last names, address, city, 
                  state, zip, phone number and email as its attributes
@@ -130,6 +130,30 @@ namespace AddressBookSystem_LINQ
                           select c;
 
             Console.WriteLine("Count of contacts in {0}, {1} is {2}", city, state, contact.Count());
+        }
+
+        /*UC8:- Ability to retrieve entries sorted alphabetically by Person’s name for a given city
+        */
+        public void SortedContactsByNameForAgivenCity(string City)
+        {
+            Console.WriteLine("Sorting by name for City");
+            var retrievedData = from records in table.AsEnumerable()
+                                where records.Field<string>("City") == City
+                                orderby records.Field<string>("FirstName"), records.Field<string>("LastName")
+                                select records;
+            ///Print Data
+            foreach (var dr in retrievedData)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("FirstName:- " + dr.Field<string>("firstName"));
+                Console.WriteLine("LastName:- " + dr.Field<string>("lastName"));
+                Console.WriteLine("Address:- " + dr.Field<string>("address"));
+                Console.WriteLine("City:- " + dr.Field<string>("city"));
+                Console.WriteLine("State:- " + dr.Field<string>("state"));
+                Console.WriteLine("Zip:- " + dr.Field<string>("zip"));
+                Console.WriteLine("PhoneNumber:- " + dr.Field<string>("phoneNumber"));
+                Console.WriteLine("Email:- " + dr.Field<string>("eMail"));
+            }
         }
     }
 }
